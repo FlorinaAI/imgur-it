@@ -75,9 +75,9 @@ Güncel bilgi için: `imgur-it -h`
    ```bash
    imgur-it -i /path/to/links.txt
    ```
-   Örnek .txt dosyası:
-   
-   https://i.imgur.com/example.png
-   https://i.imgur.com/example.png
-   https://i.imgur.com/example.png
+   Örnek `links.txt` dosyası:
+
+   https://i.imgur.com/jZVO9yV.jpeg  
+   https://i.imgur.com/FujCQg5.png  
+   https://i.imgur.com/lYdiyb6.png
    
