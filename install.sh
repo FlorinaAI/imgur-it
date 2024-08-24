@@ -40,7 +40,7 @@ say "Gerekli Python paketleri yükleniyor..." "cyan"
 show_loading 5  
 
 pip install --upgrade pip
-pip install imgurpython termcolor requests
+pip install imgurpython termcolor requests pyperclip
 
 if ! pip show imgurpython >/dev/null 2>&1 || ! pip show termcolor >/dev/null 2>&1 || ! pip show requests >/dev/null 2>&1; then
     say "Gerekli Python paketlerinin kurulumu başarısız oldu." "red"
