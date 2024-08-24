@@ -71,7 +71,7 @@ Güncel bilgi için: `imgur-it -h`
    imgur-it -i https://i.imgur.com/example.png
    ```
    
-   Imgur bağlantısından resim indirmek için:
+   Metin dosyasından Imgur bağlantılarını indirmek için:
 
    ```bash
    imgur-it -i /path/to/links.txt
@@ -84,7 +84,7 @@ Güncel bilgi için: `imgur-it -h`
 
 5. **Yükleme özeti (HTML)**
 
-   Yüklenilen resimlerin özeti:
+   Yüklenilen resimlerin özetini HTML dosyası olarak oluşturmak için:
 
    ```bash
    imgur-it -f /path/to/folder/ -s
