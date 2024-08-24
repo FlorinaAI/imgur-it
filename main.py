@@ -4,6 +4,7 @@ import requests
 from imgurpython import ImgurClient
 from datetime import datetime
 from termcolor import colored
+import time
 
 def say(message, link=None):
     current_time = datetime.now().strftime("%H:%M")
@@ -69,26 +70,39 @@ def upload_images_in_folder(folder_path, write_to_file=None):
     return imgur_links
 
 def download_image(imgur_link, download_path):
-    response = requests.get(imgur_link)
-    if response.status_code == 200:
-        with open(download_path, 'wb') as file:
-            file.write(response.content)
-        say(f"Resim başarıyla {download_path} olarak indirildi.")
-    else:
-        say(f"Resim indirilemedi. HTTP durum kodu: {response.status_code}")
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    retries = 3
+    for attempt in range(retries):
+        try:
+            response = requests.get(imgur_link, headers=headers, timeout=10)
+            if response.status_code == 200:
+                with open(download_path, 'wb') as file:
+                    file.write(response.content)
+                say(f"Resim başarıyla {download_path} olarak indirildi.")
+                return
+            elif response.status_code == 429:
+                say("Rate limit hatası alındı. Bir süre bekleniyor...")
+                time.sleep(60)
+            else:
+                say(f"Resim indirilemedi. HTTP durum kodu: {response.status_code}")
+                return
+        except requests.RequestException as e:
+            say(f"Resim indirirken bir hata oluştu: {e}")
+            return
+    say("Maksimum deneme sayısına ulaşıldı. Resim indirilemedi.")
 
 parser = argparse.ArgumentParser()
 parser.add_argument("image_path", type=str, nargs='?', help="Yüklenecek resim dosyasının yolu")
 parser.add_argument("-f", "--folder", type=str, help="Yüklenecek resimlerin bulunduğu klasörün yolu")
 parser.add_argument("-w", "--write", type=str, nargs='?', const='', help="Linkleri belirtilen dosyaya yaz (dosya yolu verilmezse varsayılan olarak aynı klasörde links.txt olarak kaydedilir)")
-parser.add_argument("-i", "--imgur", type=str, help="Imgur linkinden resmi indir (Çalışmıyor geliba ?_?)")
+parser.add_argument("-i", "--imgur", type=str, help="Imgur linkinden resmi indir")
 args = parser.parse_args()
 
 write_to_file = None
 
 if args.imgur:
     try:
-        download_image(args.imgur, "downloaded_image.jpg")
+        download_image(args.imgur, "downloaded_image.png")
     except Exception as e:
         say(f"İndirirken bir hata oluştu: {e}")
 
