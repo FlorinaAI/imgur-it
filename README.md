@@ -62,7 +62,7 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
 
 4. **Resim İndirme (Hatalı)**
 
-   Yüklenen resimlerin bağlantılarını .txt dosyasına kaydetmek için:
+   Imgur bağlantısından resim indirmek için:
 
    ```bash
    imgur -i https://imgur.com/examplelink
