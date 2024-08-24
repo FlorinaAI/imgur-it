@@ -31,7 +31,7 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
 
 ## Kullanım 🎀
 
-1. **Tek Bir Resim Yükleme**
+1. **Tek bir resim yükleme**
 
    Belirtilen resim dosyasını Imgur'a yüklemek için:
 
@@ -39,7 +39,7 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
    imgur /path/to/image.png
    ```
 
-2. **Klasördeki Tüm Resimleri Yükleme**
+2. **Klasördeki tüm resimleri yükleme**
 
    Belirtilen klasördeki tüm resimleri Imgur'a yüklemek için:
 
@@ -47,7 +47,7 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
    imgur -f /path/to/folder/
    ```
 
-3. **Linkleri .txt Dosyasına Kaydetme**
+3. **Linkleri .txt dosyasına kaydetme**
 
    Yüklenen resimlerin bağlantılarını .txt dosyasına kaydetmek için:
 
