@@ -31,6 +31,8 @@ Kurulum başarıyla tamamlandığında, `imgur-it` komutunu terminalden kullanab
 
 ## Kullanım 🎀
 
+Güncel bilgi için: `imgur-it -h`
+
 1. **Tek bir resim yükleme**
 
    Belirtilen resim dosyasını Imgur'a yüklemek için:
