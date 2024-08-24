@@ -69,3 +69,15 @@ Güncel bilgi için: `imgur-it -h`
    ```bash
    imgur-it -i https://i.imgur.com/example.png
    ```
+   
+   Imgur bağlantısından resim indirmek için:
+
+   ```bash
+   imgur-it -i /path/to/links.txt
+   ```
+   Örnek .txt dosyası:
+   `
+   https://i.imgur.com/example.png
+   https://i.imgur.com/example.png
+   https://i.imgur.com/example.png
+   `
