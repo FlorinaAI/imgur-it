@@ -76,8 +76,8 @@ Güncel bilgi için: `imgur-it -h`
    imgur-it -i /path/to/links.txt
    ```
    Örnek .txt dosyası:
-   `
+   
    https://i.imgur.com/example.png
    https://i.imgur.com/example.png
    https://i.imgur.com/example.png
-   `
+   
