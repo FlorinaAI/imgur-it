@@ -1,6 +1,6 @@
 # Imgur it ✨
 
-Linux terminalinde Imgur ile resim yükleme, bağlantıları yönetme ve indirme işlemlerini kolaylaştıran bir Python betiğidir. Bu araç, komut satırından basitçe `imgur` komutunu kullanarak Imgur işlemlerinizi gerçekleştirmenizi sağlar.
+Linux terminalinde Imgur ile resim yükleme, bağlantıları yönetme ve indirme işlemlerini kolaylaştıran bir Python betiğidir. Bu araç, komut satırından basitçe `imgur-it` komutunu kullanarak Imgur işlemlerinizi gerçekleştirmenizi sağlar.
  
 ## Özellikler 🌸
 
