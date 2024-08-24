@@ -60,10 +60,10 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
    imgur -f /path/to/folder/ -w /path/to/txt.txt
    ```
 
-4. **Resim İndirme (Hatalı)**
+4. **Resim İndirme**
 
    Imgur bağlantısından resim indirmek için:
 
    ```bash
-   imgur -i https://imgur.com/examplelink
+   imgur -i https://i.imgur.com/example.png
    ```
