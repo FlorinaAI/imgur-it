@@ -16,7 +16,7 @@ Linux terminalinde Imgur ile resim yükleme, bağlantıları yönetme ve indirme
    git clone https://github.com/FlorinaAI/imgur-it.git
    ```
 
-2. **Terminali açın ve proje klasörüne gidin:**
+2. **Projenin klasörüne gidin:**
    ```bash
    cd imgur-it
    ```
