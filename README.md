@@ -1,4 +1,4 @@
-# Florina's Imgur ✨
+# Imgur it ✨
 
 Linux terminalinde Imgur ile resim yükleme, bağlantıları yönetme ve indirme işlemlerini kolaylaştıran bir Python betiğidir. Bu araç, komut satırından basitçe `imgur` komutunu kullanarak Imgur işlemlerinizi gerçekleştirmenizi sağlar.
  
@@ -13,21 +13,21 @@ Linux terminalinde Imgur ile resim yükleme, bağlantıları yönetme ve indirme
 
 1. **Projeyi klonlayın:**
    ```bash
-   git clone https://github.com/FlorinaAI/imgur.git
+   git clone https://github.com/FlorinaAI/imgur-it.git
    ```
 
 2. **Terminali açın ve proje klasörüne gidin:**
    ```bash
-   cd imgur
+   cd imgur-it
    ```
 
 3. **Kurulum betiğini çalıştırın:**
     ```bash
     ./install.sh
     ```
-4. **Kurulum sırasında sizden Imgur API anahtarlarınızı girmeniz istenecektir. [Client oluşturun](https://api.imgur.com/oauth2/addclient)**
+4. **Kurulum sırasında sizden Imgur API anahtarlarınızı girmeniz istenecektir. [Client oluşturun!](https://api.imgur.com/oauth2/addclient)**
    
-Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabilirsiniz.
+Kurulum başarıyla tamamlandığında, `imgur-it` komutunu terminalden kullanabilirsiniz.
 
 ## Kullanım 🎀
 
@@ -36,7 +36,7 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
    Belirtilen resim dosyasını Imgur'a yüklemek için:
 
    ```bash
-   imgur /path/to/image.png
+   imgur-it /path/to/image.png
    ```
 
 2. **Klasördeki tüm resimleri yükleme**
@@ -44,7 +44,7 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
    Belirtilen klasördeki tüm resimleri Imgur'a yüklemek için:
 
    ```bash
-   imgur -f /path/to/folder/
+   imgur-it -f /path/to/folder/
    ```
 
 3. **Linkleri .txt dosyasına kaydetme**
@@ -52,12 +52,12 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
    Yüklenen resimlerin bağlantılarını .txt dosyasına kaydetmek için:
 
    ```bash
-   imgur -f /path/to/folder/ -w
+   imgur-it -f /path/to/folder/ -w
    ```
    .txt dosyasının konumunu belirtmek için:
 
    ```bash
-   imgur -f /path/to/folder/ -w /path/to/txt.txt
+   imgur-it -f /path/to/folder/ -w /path/to/txt.txt
    ```
 
 4. **Resim İndirme**
@@ -65,5 +65,5 @@ Kurulum başarıyla tamamlandığında, `imgur` komutunu terminalden kullanabili
    Imgur bağlantısından resim indirmek için:
 
    ```bash
-   imgur -i https://i.imgur.com/example.png
+   imgur-it -i https://i.imgur.com/example.png
    ```
