@@ -26,9 +26,9 @@ show_loading() {
   done
 }
 
-CONFIG_DIR="$HOME/.config/florinasimgur"
+CONFIG_DIR="$HOME/.config/imgur-it"
 VENV_DIR="$CONFIG_DIR/venv"
-IMGUR_CMD="/usr/local/bin/imgur"
+IMGUR_CMD="/usr/local/bin/imgur-it"
 
 mkdir -p "$CONFIG_DIR"
 cp main.py "$CONFIG_DIR/"
@@ -74,5 +74,5 @@ EOF
 
 sudo chmod +x "$IMGUR_CMD"
 show_loading 3
-say "Kurulum tamamlandı. 'imgur' komutunu kullanabilirsiniz." "green"
-say "Kullanım için: imgur -h" "green"
+say "Kurulum tamamlandı. 'imgur-it' komutunu kullanabilirsiniz." "green"
+say "Kullanım için: imgur-it -h" "green"
