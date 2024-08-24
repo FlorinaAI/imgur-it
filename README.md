@@ -6,7 +6,7 @@ Linux terminalinde Imgur ile resim yükleme, bağlantıları yönetme ve indirme
 
 - Tek bir resmi veya bir klasördeki tüm resimleri Imgur'a yükleyin.
 - Yüklenen resimlerin bağlantılarını `links.txt` dosyasına kaydedin.
-- Imgur bağlantılarından resim indirin. (Çalışmıyor sanırım ?_?)
+- Imgur bağlantılarından resim indirin.
 - Python bağımlılıkları ve API anahtarlarını yönetin.
 
 ## Kurulum 💖
