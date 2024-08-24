@@ -14,30 +14,27 @@ def say(message, link=None):
         formatted_message += colored(f" {link}", 'red')
     print(f"{formatted_time} {formatted_message}")
 
-
 def read_keys_from_file(file_path):
-  try:
-    with open(file_path, 'r') as file:
-      lines = file.readlines()
-      for line in lines:
-        if line.startswith('IMGUR_CLIENT_ID'):
-          IMGUR_CLIENT_ID = line.split('=')[1].strip()
-        elif line.startswith('IMGUR_CLIENT_SECRET'):
-          IMGUR_CLIENT_SECRET = line.split('=')[1].strip()
+    try:
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+            for line in lines:
+                if line.startswith('IMGUR_CLIENT_ID'):
+                    IMGUR_CLIENT_ID = line.split('=')[1].strip()
+                elif line.startswith('IMGUR_CLIENT_SECRET'):
+                    IMGUR_CLIENT_SECRET = line.split('=')[1].strip()
 
-      return IMGUR_CLIENT_ID, IMGUR_CLIENT_SECRET
-  except FileNotFoundError:
-    say(f"Dosya bulunamadı: {file_path}")
-    return None, None
+            return IMGUR_CLIENT_ID, IMGUR_CLIENT_SECRET
+    except FileNotFoundError:
+        say(f"Dosya bulunamadı: {file_path}")
+        return None, None
 
 key_file_path = os.path.expanduser('~/.config/imgur-it/keys.txt')
-
-
 IMGUR_CLIENT_ID, IMGUR_CLIENT_SECRET = read_keys_from_file(key_file_path)
 
 if not IMGUR_CLIENT_ID or not IMGUR_CLIENT_SECRET:
-  say("Imgur API anahtarları okunamadı. Lütfen keys.txt dosyasını kontrol edin.")
-  exit(1)
+    say("Imgur API anahtarları okunamadı. Lütfen keys.txt dosyasını kontrol edin.")
+    exit(1)
 
 def upload_image(image_path):
     client = ImgurClient(IMGUR_CLIENT_ID, IMGUR_CLIENT_SECRET)
@@ -91,20 +88,37 @@ def download_image(imgur_link, download_path):
             return
     say("Maksimum deneme sayısına ulaşıldı. Resim indirilemedi.")
 
+def download_images_from_file(file_path):
+    if not os.path.isfile(file_path):
+        say(f"Link dosyası bulunamadı: {file_path}")
+        return
+    
+    with open(file_path, 'r') as file:
+        links = file.readlines()
+
+    for idx, link in enumerate(links, start=1):
+        link = link.strip()
+        if link:
+            say(f"{idx}/{len(links)}: {link} indiriliyor...")
+            download_image(link, f"downloaded_image_{idx}.png")
+
 parser = argparse.ArgumentParser()
 parser.add_argument("image_path", type=str, nargs='?', help="Yüklenecek resim dosyasının yolu")
 parser.add_argument("-f", "--folder", type=str, help="Yüklenecek resimlerin bulunduğu klasörün yolu")
 parser.add_argument("-w", "--write", type=str, nargs='?', const='', help="Linkleri belirtilen dosyaya yaz (dosya yolu verilmezse varsayılan olarak aynı klasörde links.txt olarak kaydedilir)")
-parser.add_argument("-i", "--imgur", type=str, help="Imgur linkinden resmi indir")
+parser.add_argument("-i", "--imgur", type=str, help="Imgur linkinden resmi indir veya bir .txt dosyasından tüm linkleri indir")
 args = parser.parse_args()
 
 write_to_file = None
 
 if args.imgur:
-    try:
-        download_image(args.imgur, "downloaded_image.png")
-    except Exception as e:
-        say(f"İndirirken bir hata oluştu: {e}")
+    if args.imgur.endswith('.txt'):
+        download_images_from_file(args.imgur)
+    else:
+        try:
+            download_image(args.imgur, "downloaded_image.png")
+        except Exception as e:
+            say(f"İndirirken bir hata oluştu: {e}")
 
 elif args.image_path:
     try:
@@ -116,7 +130,7 @@ elif args.image_path:
 elif args.folder:
     if os.path.isdir(args.folder):
         if args.write is not None:
-            if args.write == '':               
+            if args.write == '':
                 write_to_file = os.path.join(args.folder, "links.txt")
             else:
                 write_to_file = args.write
