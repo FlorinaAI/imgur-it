@@ -8,9 +8,6 @@ say() {
   case "$color" in
     "red") echo -e "$time_stamp \e[31m$message\e[0m" ;;
     "green") echo -e "$time_stamp \e[32m$message\e[0m" ;;
-    "yellow") echo -e "$time_stamp \e[33m$message\e[0m" ;;
-    "blue") echo -e "$time_stamp \e[34m$message\e[0m" ;;
-    "magenta") echo -e "$time_stamp \e[35m$message\e[0m" ;;
     "cyan") echo -e "$time_stamp \e[36m$message\e[0m" ;;
     *) echo -e "$time_stamp $message" ;;
   esac
@@ -30,17 +27,17 @@ show_loading() {
   done
 }
 
-CONFIG_DIR="$HOME/.config/florinasimgur"
-IMGUR_CMD="/usr/local/bin/imgur"
+CONFIG_DIR="$HOME/.config/imgur-it"
+IMGUR_CMD="/usr/local/bin/imgur-it"
 
 say "Kaldırma işlemi başlatılıyor..." "cyan"
 show_loading 3
 
 if [ -f "$IMGUR_CMD" ]; then
   sudo rm "$IMGUR_CMD"
-  say "'imgur' komutu kaldırıldı." "green"
+  say "'imgur-it' komutu kaldırıldı." "green"
 else
-  say "'imgur' komutu bulunamadı." "red"
+  say "'imgur-it' komutu bulunamadı." "red"
 fi
 
 show_loading 3

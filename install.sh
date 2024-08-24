@@ -6,11 +6,7 @@ say() {
   local time_stamp=$(date +"[%H:%M:%S]")
 
   case "$color" in
-    "red") echo -e "$time_stamp \e[31m$message\e[0m" ;;
     "green") echo -e "$time_stamp \e[32m$message\e[0m" ;;
-    "yellow") echo -e "$time_stamp \e[33m$message\e[0m" ;;
-    "blue") echo -e "$time_stamp \e[34m$message\e[0m" ;;
-    "magenta") echo -e "$time_stamp \e[35m$message\e[0m" ;;
     "cyan") echo -e "$time_stamp \e[36m$message\e[0m" ;;
     *) echo -e "$time_stamp $message" ;;
   esac

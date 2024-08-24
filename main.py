@@ -30,7 +30,7 @@ def read_keys_from_file(file_path):
     say(f"Dosya bulunamadı: {file_path}")
     return None, None
 
-key_file_path = os.path.expanduser('~/.config/florinasimgur/keys.txt')
+key_file_path = os.path.expanduser('~/.config/imgur-it/keys.txt')
 
 
 IMGUR_CLIENT_ID, IMGUR_CLIENT_SECRET = read_keys_from_file(key_file_path)
