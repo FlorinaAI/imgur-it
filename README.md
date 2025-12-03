@@ -9,8 +9,6 @@ A easy-to-use Python tool for uploading images to Imgur, managing links, and dow
 - 📥 Download images from Imgur links (single or batch from file)
 - 🛡️ Non-invasive: Uses XDG Base Directory specification
 - 📦 Automatic Installation: Installs to `~/.local/bin` (no sudo required!)
-- 💖 Beautiful colored output with loading animations
-- 🔒 Secure API key storage
 
 ## 📦 Requirements
 
