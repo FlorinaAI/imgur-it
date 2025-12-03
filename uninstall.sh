@@ -1,54 +1,74 @@
 #!/bin/bash
 
-say() {
-  local message="$1"
-  local color="$2"
-  local time_stamp=$(date +"[%H:%M:%S]")
+# 🌸 Colors 🌸
+PINK='\033[38;2;230;143;172m'
+RESET='\033[0m'
 
-  case "$color" in
-    "red") echo -e "$time_stamp \e[31m$message\e[0m" ;;
-    "green") echo -e "$time_stamp \e[32m$message\e[0m" ;;
-    "cyan") echo -e "$time_stamp \e[36m$message\e[0m" ;;
-    *) echo -e "$time_stamp $message" ;;
-  esac
+# Helper function for cute printing
+custom_print() {
+    echo -e "${PINK}$1${RESET}"
 }
 
-show_loading() {
-  local duration=$1
-  local interval=0.1
-  local chars="/-\|"
-  
-  end_time=$((SECONDS + duration))
-  while [ $SECONDS -lt $end_time ]; do
-    for ((i=0; i<${#chars}; i++)); do
-      echo -ne "${chars:$i:1}" "\r"
-      sleep $interval
-    done
-  done
-}
-
+# Directories
 CONFIG_DIR="$HOME/.config/imgur-it"
-IMGUR_CMD="/usr/local/bin/imgur-it"
+DATA_DIR="$HOME/.local/share/imgur-it"
+CACHE_DIR="$HOME/.cache/imgur-it"
+WRAPPER_PATH="$HOME/.local/bin/imgur-it"
 
-say "Kaldırma işlemi başlatılıyor..." "cyan"
-show_loading 3
+custom_print "🌸 imgur-it Uninstaller 🌸"
+custom_print "---------------------------"
+custom_print "==== Uninstalling imgur-it~ Let's clean up with sparkles! ✨ ===="
 
-if [ -f "$IMGUR_CMD" ]; then
-  sudo rm "$IMGUR_CMD"
-  say "'imgur-it' komutu kaldırıldı." "green"
+# 1. Remove Wrapper
+if [ -f "$WRAPPER_PATH" ]; then
+    custom_print "→ Removing wrapper ($WRAPPER_PATH)..."
+    rm "$WRAPPER_PATH"
+    custom_print "✓ Wrapper removed!"
 else
-  say "'imgur-it' komutu bulunamadı." "red"
+    custom_print "✓ Wrapper not found."
 fi
 
-show_loading 3
+# 2. Remove Data Directory (venv & script)
+if [ -d "$DATA_DIR" ]; then
+    custom_print "→ Removing data directory ($DATA_DIR)..."
+    rm -rf "$DATA_DIR"
+    custom_print "✓ Data directory removed."
+else
+    custom_print "✓ Data directory not found."
+fi
 
+# 3. Remove Config Directory
 if [ -d "$CONFIG_DIR" ]; then
-  rm -rf "$CONFIG_DIR"
-  say "$CONFIG_DIR dizini ve içindeki dosyalar kaldırıldı." "green"
+    custom_print "→ Removing config directory ($CONFIG_DIR)..."
+    rm -rf "$CONFIG_DIR"
+    custom_print "✓ Config directory removed."
 else
-  say "$CONFIG_DIR dizini bulunamadı." "red"
+    custom_print "✓ Config directory not found."
 fi
 
-show_loading 3
+# 4. Remove Cache (if exists)
+if [ -d "$CACHE_DIR" ]; then
+    custom_print "→ Removing cache directory ($CACHE_DIR)..."
+    rm -rf "$CACHE_DIR"
+    custom_print "✓ Cache directory removed."
+else
+    custom_print "✓ Cache directory not found."
+fi
 
-say "Kaldırma işlemi tamamlandı." "green"
+# 5. PATH Warning
+custom_print "→ Checking shell config..."
+SHELL_RC=""
+case "$SHELL" in
+    */bash) SHELL_RC="$HOME/.bashrc" ;;
+    */zsh)  SHELL_RC="$HOME/.zshrc" ;;
+esac
+
+if [ -n "$SHELL_RC" ] && [ -f "$SHELL_RC" ]; then
+    if grep -q "imgur-it installer" "$SHELL_RC"; then
+        custom_print "⚠ Note: You may have a PATH export line in $SHELL_RC added by the installer."
+        custom_print "  Please check and remove it manually if desired."
+    fi
+fi
+
+custom_print "---------------------------"
+custom_print "✨ Uninstallation Complete! ✨"

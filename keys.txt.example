@@ -1,0 +1,9 @@
+# Example configuration file for imgur-it
+# Copy this file to ~/.config/imgur-it/keys.txt and fill in your API credentials
+# You can get your API credentials from: https://api.imgur.com/oauth2/addclient
+
+# Your Imgur Client ID
+IMGUR_CLIENT_ID = your_client_id_here
+
+# Your Imgur Client Secret
+IMGUR_CLIENT_SECRET = your_client_secret_here

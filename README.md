@@ -1,91 +1,178 @@
-# Imgur it ✨
+# 🌸 imgur-it
 
-Linux terminalinde Imgur ile resim yükleme, bağlantıları yönetme ve indirme işlemlerini kolaylaştıran bir Python betiğidir. Bu araç, komut satırından basitçe `imgur-it` komutunu kullanarak Imgur işlemlerinizi gerçekleştirmenizi sağlar.
- 
-## Özellikler 🌸
+A easy-to-use Python tool for uploading images to Imgur, managing links, and downloading images directly from your Linux terminal. Simply use the `imgur-it` command to handle all your Imgur operations!
 
-- Tek bir resmi veya bir klasördeki tüm resimleri Imgur'a yükleyin.
-- Yüklenen resimlerin bağlantılarını `links.txt` dosyasına kaydedin.
-- Imgur bağlantılarından tekli ya da çoklu resim indirin.
-- HTML olarak yükleme özeti oluşturun.
-- Python bağımlılıkları ve API anahtarlarını yönetin.
+## ✨ Features
 
-## Kurulum 💖
+- 🎀 Upload single images or entire folders to Imgur
+- 📋 Save uploaded image links to a `.txt` file automatically
+- 📥 Download images from Imgur links (single or batch from file)
+- 🛡️ Non-invasive: Uses XDG Base Directory specification
+- 📦 Automatic Installation: Installs to `~/.local/bin` (no sudo required!)
+- 💖 Beautiful colored output with loading animations
+- 🔒 Secure API key storage
 
-1. **Projeyi klonlayın:**
+## 📦 Requirements
+
+- Python 3.6+ (with venv support)
+- A Linux terminal
+- Imgur API credentials ([Create a client](https://api.imgur.com/oauth2/addclient))
+
+## 🔧 Installation
+
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/FlorinaAI/imgur-it.git
    ```
 
-2. **Projenin klasörüne gidin:**
+2. **Navigate to the project folder:**
    ```bash
    cd imgur-it
    ```
 
-3. **Kurulum betiğini çalıştırın:**
-    ```bash
-    ./install.sh
-    ```
-4. **Kurulum sırasında sizden Imgur API anahtarlarınızı girmeniz istenecektir. [Client oluşturun!](https://api.imgur.com/oauth2/addclient)**
-   
-Kurulum başarıyla tamamlandığında, `imgur-it` komutunu terminalden kullanabilirsiniz.
-
-## Kullanım 🎀
-
-Güncel bilgi için: `imgur-it -h`
-
-1. **Tek bir resim yükleme**
-
-   Belirtilen resim dosyasını Imgur'a yüklemek için:
-
+3. **Run the installation script:**
    ```bash
-   imgur-it /path/to/image.png
+   chmod +x install.sh
+   ./install.sh
    ```
 
-2. **Klasördeki tüm resimleri yükleme**
+4. **During installation, you'll be prompted to enter your Imgur API credentials.**
 
-   Belirtilen klasördeki tüm resimleri Imgur'a yüklemek için:
+The installer will:
+1. Create a virtual environment in `~/.local/share/imgur-it/venv`
+2. Install dependencies automatically
+3. Add `imgur-it` to your PATH (if needed)
+4. Save your API keys securely
 
-   ```bash
-   imgur-it -f /path/to/folder/
-   ```
+Once installation is complete, you can use the `imgur-it` command from anywhere in your terminal!
 
-3. **Linkleri .txt dosyasına kaydetme**
+## 🗑️ Uninstallation
 
-   Yüklenen resimlerin bağlantılarını .txt dosyasına kaydetmek için:
+```bash
+cd imgur-it
+chmod +x uninstall.sh
+./uninstall.sh
+```
 
-   ```bash
-   imgur-it -f /path/to/folder/ -w
-   ```
-   .txt dosyasının konumunu belirtmek için:
+This will remove the wrapper, config, virtual environment, and cache. Clean as a whistle! ✨
 
-   ```bash
-   imgur-it -f /path/to/folder/ -w /path/to/txt.txt
-   ```
+## ❄️ Usage
 
-4. **Resim indirme**
+For current information and all options: `imgur-it -h`
 
-   Imgur bağlantısından resim indirmek için:
+### Command Line Options
 
-   ```bash
-   imgur-it -i https://i.imgur.com/example.png
-   ```
-   
-   Metin dosyasından Imgur bağlantılarını indirmek için:
+- `-f, --folder` - Upload all images in a folder
+- `-w, --write` - Save upload links to a file
+- `-i, --imgur` - Download from Imgur link or file
+- `-q, --quiet` - Suppress logo and non-essential output (useful for scripts)
+- `-v, --version` - Show version information
+- `-h, --help` - Show help message
 
-   ```bash
-   imgur-it -i /path/to/links.txt
-   ```
-   Örnek `links.txt` dosyası:
 
-   https://i.imgur.com/example.png  
-   https://i.imgur.com/exapmle.png  
-   https://i.imgur.com/example.png
+### 1. Upload a single image
 
-5. **Yükleme özeti (HTML)**
+Upload a specific image file to Imgur (link automatically copied to clipboard):
 
-   Yüklenilen resimlerin özetini HTML dosyası olarak oluşturmak için:
+```bash
+imgur-it /path/to/image.png
+```
 
-   ```bash
-   imgur-it -f /path/to/folder/ -s
-   ```  
+### 2. Upload all images in a folder
+
+Upload all images in a specified folder to Imgur:
+
+```bash
+imgur-it -f /path/to/folder/
+```
+
+### 3. Save links to a .txt file
+
+Save uploaded image links to a `.txt` file:
+
+```bash
+imgur-it -f /path/to/folder/ -w
+```
+
+Specify a custom location for the .txt file:
+
+```bash
+imgur-it -f /path/to/folder/ -w /path/to/links.txt
+```
+
+### 4. Download images
+
+Download an image from an Imgur link:
+
+```bash
+imgur-it -i https://i.imgur.com/example.png
+```
+
+Download multiple images from a text file containing Imgur links:
+
+```bash
+imgur-it -i /path/to/links.txt
+```
+
+Example `links.txt` file:
+```
+https://i.imgur.com/example1.png
+https://i.imgur.com/example2.png
+https://i.imgur.com/example3.png
+```
+
+## 🍦 Configuration
+
+Configuration files are stored according to XDG Base Directory specification:
+
+- **Config:** `~/.config/imgur-it/keys.txt` - Your API credentials
+- **Data:** `~/.local/share/imgur-it/` - Virtual environment and script
+- **Binary:** `~/.local/bin/imgur-it` - Executable wrapper
+
+### API Keys Format
+
+The `keys.txt` file should contain:
+```
+IMGUR_CLIENT_ID = your_client_id_here
+IMGUR_CLIENT_SECRET = your_client_secret_here
+```
+
+## 🎀 Directory Structure
+
+After installation:
+```
+~/.local/share/imgur-it/    # Data directory
+  ├── venv/                   # Virtual environment
+  └── imgur-it.py             # Main script
+
+~/.config/imgur-it/          # Config directory
+  └── keys.txt                # API credentials
+
+~/.local/bin/imgur-it        # Executable wrapper
+```
+
+## 🌸 Troubleshooting
+
+### "imgur-it: command not found"
+- Make sure `~/.local/bin` is in your PATH
+- Restart your terminal or run: `source ~/.bashrc` (or `~/.zshrc` for zsh)
+- Or manually add to your shell RC file:
+  ```bash
+  export PATH="$HOME/.local/bin:$PATH"
+  ```
+
+### "Configuration file not found"
+- Make sure you ran the installer and entered your API keys
+- Check that `~/.config/imgur-it/keys.txt` exists
+- Re-run the installer if needed
+
+### Upload/Download Failures
+- Verify your internet connection
+- Check that your API credentials are valid
+- For rate limiting errors, wait a few minutes and try again
+
+## 🧁 Credits
+
+Made with ♡ by [FlorinaAI](https://github.com/FlorinaAI)
+
+Inspired by the clean architecture of [moefetch](https://github.com/FlorinaAI/moefetch)
