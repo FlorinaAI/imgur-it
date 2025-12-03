@@ -170,9 +170,3 @@ After installation:
 - Verify your internet connection
 - Check that your API credentials are valid
 - For rate limiting errors, wait a few minutes and try again
-
-## 🧁 Credits
-
-Made with ♡ by [FlorinaAI](https://github.com/FlorinaAI)
-
-Inspired by the clean architecture of [moefetch](https://github.com/FlorinaAI/moefetch)
